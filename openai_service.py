@@ -1,13 +1,10 @@
 import openai
 import time
-from rich.console import Console
-from rich.text import Text
 from io_service import IOService
 from prompt_engine import PromptEngine
 
 io = IOService()
 prompt_engine = PromptEngine()
-console = Console()
 
 
 class OpenAIService:
@@ -51,10 +48,4 @@ class OpenAIService:
             ],
         )
         translated_text = chat_completion.choices[0].message.content
-        r_text = Text(text="\n")
-        r_text.append("Translated ")
-        r_text.append(text, style="bold yellow")
-        r_text.append(" to ")
-        r_text.append(translated_text, style="bold yellow")
-        console.print(r_text)
         return translated_text
